@@ -10,7 +10,7 @@ import * as argon2 from "argon2";
 import * as crypto from "crypto";
 import { PrismaService } from "../prisma/prisma.service";
 import { RegisterDto, LoginDto } from "./dto";
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../common/enums";
 
 @Injectable()
 export class AuthService {

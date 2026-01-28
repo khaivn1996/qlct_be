@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoryController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../common/enums");
 const category_service_1 = require("./category.service");
 const dto_1 = require("./dto");
 const guards_1 = require("../common/guards");
@@ -41,7 +41,7 @@ exports.CategoryController = CategoryController;
 __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiOperation)({ summary: "Get all categories for current user" }),
-    (0, swagger_1.ApiQuery)({ name: "type", enum: client_1.TransactionType, required: false }),
+    (0, swagger_1.ApiQuery)({ name: "type", enum: enums_1.TransactionType, required: false }),
     (0, swagger_1.ApiResponse)({ status: 200, description: "List of categories" }),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Query)("type")),

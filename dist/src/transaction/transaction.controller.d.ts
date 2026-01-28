@@ -13,11 +13,11 @@ export declare class TransactionController {
         };
         category: {
             name: string;
-            type: import("@prisma/client").$Enums.TransactionType;
+            type: string;
             id: string;
             icon: string;
         };
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -33,11 +33,11 @@ export declare class TransactionController {
         amount: string;
         category: {
             name: string;
-            type: import("@prisma/client").$Enums.TransactionType;
+            type: string;
             id: string;
             icon: string;
         };
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -53,11 +53,11 @@ export declare class TransactionController {
         amount: string;
         category: {
             name: string;
-            type: import("@prisma/client").$Enums.TransactionType;
+            type: string;
             id: string;
             icon: string;
         };
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;

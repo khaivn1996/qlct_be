@@ -16,7 +16,7 @@ import {
   ApiResponse,
   ApiQuery,
 } from "@nestjs/swagger";
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../common/enums";
 import { CategoryService } from "./category.service";
 import { CreateCategoryDto, UpdateCategoryDto } from "./dto";
 import { JwtAuthGuard } from "../common/guards";

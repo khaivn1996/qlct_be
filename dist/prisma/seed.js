@@ -34,22 +34,23 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
+const enums_1 = require("../src/common/enums");
 const argon2 = __importStar(require("argon2"));
 const prisma = new client_1.PrismaClient();
 const defaultExpenseCategories = [
-    { name: "Ăn uống", icon: "Bowl", type: client_1.TransactionType.EXPENSE },
-    { name: "Mua sắm", icon: "ShoppingCart", type: client_1.TransactionType.EXPENSE },
-    { name: "Đi lại", icon: "Van", type: client_1.TransactionType.EXPENSE },
-    { name: "Hóa đơn", icon: "Document", type: client_1.TransactionType.EXPENSE },
-    { name: "Sức khỏe", icon: "FirstAidKit", type: client_1.TransactionType.EXPENSE },
-    { name: "Giải trí", icon: "Film", type: client_1.TransactionType.EXPENSE },
-    { name: "Giáo dục", icon: "Reading", type: client_1.TransactionType.EXPENSE },
-    { name: "Khác", icon: "More", type: client_1.TransactionType.EXPENSE },
+    { name: "Ăn uống", icon: "Bowl", type: enums_1.TransactionType.EXPENSE },
+    { name: "Mua sắm", icon: "ShoppingCart", type: enums_1.TransactionType.EXPENSE },
+    { name: "Đi lại", icon: "Van", type: enums_1.TransactionType.EXPENSE },
+    { name: "Hóa đơn", icon: "Document", type: enums_1.TransactionType.EXPENSE },
+    { name: "Sức khỏe", icon: "FirstAidKit", type: enums_1.TransactionType.EXPENSE },
+    { name: "Giải trí", icon: "Film", type: enums_1.TransactionType.EXPENSE },
+    { name: "Giáo dục", icon: "Reading", type: enums_1.TransactionType.EXPENSE },
+    { name: "Khác", icon: "More", type: enums_1.TransactionType.EXPENSE },
 ];
 const defaultIncomeCategories = [
-    { name: "Lương", icon: "Money", type: client_1.TransactionType.INCOME },
-    { name: "Thưởng", icon: "Present", type: client_1.TransactionType.INCOME },
-    { name: "Thu khác", icon: "Coin", type: client_1.TransactionType.INCOME },
+    { name: "Lương", icon: "Money", type: enums_1.TransactionType.INCOME },
+    { name: "Thưởng", icon: "Present", type: enums_1.TransactionType.INCOME },
+    { name: "Thu khác", icon: "Coin", type: enums_1.TransactionType.INCOME },
 ];
 async function main() {
     console.log("🌱 Starting seed...");
@@ -105,7 +106,7 @@ async function main() {
                     userId: user.id,
                     walletId: wallet.id,
                     categoryId: salaryCategory.id,
-                    type: client_1.TransactionType.INCOME,
+                    type: enums_1.TransactionType.INCOME,
                     amount: BigInt(15000000),
                     note: "Lương tháng này",
                     txnDate: new Date(thisMonth.getFullYear(), thisMonth.getMonth(), 5),
@@ -114,7 +115,7 @@ async function main() {
                     userId: user.id,
                     walletId: wallet.id,
                     categoryId: foodCategory.id,
-                    type: client_1.TransactionType.EXPENSE,
+                    type: enums_1.TransactionType.EXPENSE,
                     amount: BigInt(150000),
                     note: "Ăn trưa với đồng nghiệp",
                     txnDate: new Date(thisMonth.getFullYear(), thisMonth.getMonth(), 10),
@@ -123,7 +124,7 @@ async function main() {
                     userId: user.id,
                     walletId: wallet.id,
                     categoryId: shoppingCategory.id,
-                    type: client_1.TransactionType.EXPENSE,
+                    type: enums_1.TransactionType.EXPENSE,
                     amount: BigInt(500000),
                     note: "Mua quần áo",
                     txnDate: new Date(thisMonth.getFullYear(), thisMonth.getMonth(), 15),
@@ -132,13 +133,12 @@ async function main() {
                     userId: user.id,
                     walletId: wallet.id,
                     categoryId: foodCategory.id,
-                    type: client_1.TransactionType.EXPENSE,
+                    type: enums_1.TransactionType.EXPENSE,
                     amount: BigInt(200000),
                     note: "Cafe",
                     txnDate: today,
                 },
             ],
-            skipDuplicates: true,
         });
         console.log("✅ Created sample transactions");
     }

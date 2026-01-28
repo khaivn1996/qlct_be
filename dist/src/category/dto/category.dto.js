@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoryQueryDto = exports.UpdateCategoryDto = exports.CreateCategoryDto = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../../common/enums");
 class CreateCategoryDto {
 }
 exports.CreateCategoryDto = CreateCategoryDto;
@@ -22,8 +22,8 @@ __decorate([
     __metadata("design:type", String)
 ], CreateCategoryDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ enum: client_1.TransactionType, example: "EXPENSE" }),
-    (0, class_validator_1.IsEnum)(client_1.TransactionType),
+    (0, swagger_1.ApiProperty)({ enum: enums_1.TransactionType, example: "EXPENSE" }),
+    (0, class_validator_1.IsEnum)(enums_1.TransactionType),
     __metadata("design:type", String)
 ], CreateCategoryDto.prototype, "type", void 0);
 __decorate([
@@ -62,8 +62,8 @@ class CategoryQueryDto {
 }
 exports.CategoryQueryDto = CategoryQueryDto;
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ enum: client_1.TransactionType }),
-    (0, class_validator_1.IsEnum)(client_1.TransactionType),
+    (0, swagger_1.ApiPropertyOptional)({ enum: enums_1.TransactionType }),
+    (0, class_validator_1.IsEnum)(enums_1.TransactionType),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CategoryQueryDto.prototype, "type", void 0);

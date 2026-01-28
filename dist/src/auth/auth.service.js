@@ -49,7 +49,7 @@ const jwt_1 = require("@nestjs/jwt");
 const argon2 = __importStar(require("argon2"));
 const crypto = __importStar(require("crypto"));
 const prisma_service_1 = require("../prisma/prisma.service");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../common/enums");
 let AuthService = class AuthService {
     constructor(prisma, jwtService, configService) {
         this.prisma = prisma;
@@ -78,17 +78,17 @@ let AuthService = class AuthService {
             },
         });
         const defaultCategories = [
-            { name: "Ăn uống", icon: "Bowl", type: client_1.TransactionType.EXPENSE },
-            { name: "Mua sắm", icon: "ShoppingCart", type: client_1.TransactionType.EXPENSE },
-            { name: "Đi lại", icon: "Van", type: client_1.TransactionType.EXPENSE },
-            { name: "Hóa đơn", icon: "Document", type: client_1.TransactionType.EXPENSE },
-            { name: "Sức khỏe", icon: "FirstAidKit", type: client_1.TransactionType.EXPENSE },
-            { name: "Giải trí", icon: "Film", type: client_1.TransactionType.EXPENSE },
-            { name: "Giáo dục", icon: "Reading", type: client_1.TransactionType.EXPENSE },
-            { name: "Khác", icon: "More", type: client_1.TransactionType.EXPENSE },
-            { name: "Lương", icon: "Money", type: client_1.TransactionType.INCOME },
-            { name: "Thưởng", icon: "Present", type: client_1.TransactionType.INCOME },
-            { name: "Thu khác", icon: "Coin", type: client_1.TransactionType.INCOME },
+            { name: "Ăn uống", icon: "Bowl", type: enums_1.TransactionType.EXPENSE },
+            { name: "Mua sắm", icon: "ShoppingCart", type: enums_1.TransactionType.EXPENSE },
+            { name: "Đi lại", icon: "Van", type: enums_1.TransactionType.EXPENSE },
+            { name: "Hóa đơn", icon: "Document", type: enums_1.TransactionType.EXPENSE },
+            { name: "Sức khỏe", icon: "FirstAidKit", type: enums_1.TransactionType.EXPENSE },
+            { name: "Giải trí", icon: "Film", type: enums_1.TransactionType.EXPENSE },
+            { name: "Giáo dục", icon: "Reading", type: enums_1.TransactionType.EXPENSE },
+            { name: "Khác", icon: "More", type: enums_1.TransactionType.EXPENSE },
+            { name: "Lương", icon: "Money", type: enums_1.TransactionType.INCOME },
+            { name: "Thưởng", icon: "Present", type: enums_1.TransactionType.INCOME },
+            { name: "Thu khác", icon: "Coin", type: enums_1.TransactionType.INCOME },
         ];
         await this.prisma.category.createMany({
             data: defaultCategories.map((cat) => ({

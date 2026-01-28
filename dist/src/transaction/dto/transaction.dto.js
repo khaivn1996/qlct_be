@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransactionQueryDto = exports.UpdateTransactionDto = exports.CreateTransactionDto = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../../common/enums");
 const class_transformer_1 = require("class-transformer");
 class CreateTransactionDto {
 }
@@ -28,8 +28,8 @@ __decorate([
     __metadata("design:type", String)
 ], CreateTransactionDto.prototype, "categoryId", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ enum: client_1.TransactionType, example: "EXPENSE" }),
-    (0, class_validator_1.IsEnum)(client_1.TransactionType),
+    (0, swagger_1.ApiProperty)({ enum: enums_1.TransactionType, example: "EXPENSE" }),
+    (0, class_validator_1.IsEnum)(enums_1.TransactionType),
     __metadata("design:type", String)
 ], CreateTransactionDto.prototype, "type", void 0);
 __decorate([
@@ -60,8 +60,8 @@ __decorate([
     __metadata("design:type", String)
 ], UpdateTransactionDto.prototype, "categoryId", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ enum: client_1.TransactionType }),
-    (0, class_validator_1.IsEnum)(client_1.TransactionType),
+    (0, swagger_1.ApiPropertyOptional)({ enum: enums_1.TransactionType }),
+    (0, class_validator_1.IsEnum)(enums_1.TransactionType),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateTransactionDto.prototype, "type", void 0);

@@ -1,6 +1,6 @@
 import { IsString, IsEnum, IsOptional } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../../common/enums";
 
 export class CreateCategoryDto {
   @ApiProperty({ example: "Ăn uống" })

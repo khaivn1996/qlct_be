@@ -1,4 +1,4 @@
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../../common/enums";
 export declare class CreateTransactionDto {
     walletId: string;
     categoryId: string;

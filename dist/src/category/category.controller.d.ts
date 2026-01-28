@@ -1,4 +1,4 @@
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../common/enums";
 import { CategoryService } from "./category.service";
 import { CreateCategoryDto, UpdateCategoryDto } from "./dto";
 export declare class CategoryController {
@@ -8,7 +8,7 @@ export declare class CategoryController {
         sub: string;
     }, type?: TransactionType): Promise<{
         name: string;
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -20,7 +20,7 @@ export declare class CategoryController {
         sub: string;
     }, dto: CreateCategoryDto): Promise<{
         name: string;
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -32,7 +32,7 @@ export declare class CategoryController {
         sub: string;
     }, id: string, dto: UpdateCategoryDto): Promise<{
         name: string;
-        type: import("@prisma/client").$Enums.TransactionType;
+        type: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;

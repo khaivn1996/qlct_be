@@ -1,4 +1,5 @@
-import { PrismaClient, TransactionType } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { TransactionType } from "../src/common/enums";
 import * as argon2 from "argon2";
 
 const prisma = new PrismaClient();
@@ -123,7 +124,6 @@ async function main() {
           txnDate: today,
         },
       ],
-      skipDuplicates: true,
     });
 
     console.log("✅ Created sample transactions");

@@ -7,7 +7,7 @@ import {
   Min,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { TransactionType } from "@prisma/client";
+import { TransactionType } from "../../common/enums";
 import { Type } from "class-transformer";
 
 export class CreateTransactionDto {

@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReportService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../common/enums");
 let ReportService = class ReportService {
     constructor(prisma) {
         this.prisma = prisma;
@@ -43,7 +43,7 @@ let ReportService = class ReportService {
         let totalExpense = BigInt(0);
         const expenseByCategory = new Map();
         for (const txn of transactions) {
-            if (txn.type === client_1.TransactionType.INCOME) {
+            if (txn.type === enums_1.TransactionType.INCOME) {
                 totalIncome += txn.amount;
             }
             else {
