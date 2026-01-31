@@ -1,0 +1,22 @@
+services:
+  qlct-be:
+    image: qlct-backend
+    container_name: qlct-backend
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "file:/data/qlct.db"
+    volumes:
+      - /mnt/storage/apps/qlct_be/data/qlct.db:/data/qlct.db
+      - /mnt/storage/apps/qlct_be/logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/docs"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
