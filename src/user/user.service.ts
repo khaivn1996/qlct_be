@@ -22,4 +22,17 @@ export class UserService {
       where: { email },
     });
   }
+
+  async update(id: string, dto: { avatar?: string }) {
+    return this.prisma.user.update({
+      where: { id },
+      data: dto,
+      select: {
+        id: true,
+        email: true,
+        avatar: true,
+        createdAt: true,
+      },
+    });
+  }
 }

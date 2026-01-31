@@ -45,6 +45,7 @@ export class AuthResponseDto {
   user: {
     id: string;
     email: string;
+    avatar?: string;
   };
 }
 
@@ -57,4 +58,7 @@ export class UserResponseDto {
 
   @ApiProperty()
   createdAt: Date;
+
+  @ApiProperty({ required: false })
+  avatar?: string;
 }

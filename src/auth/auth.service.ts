@@ -83,6 +83,7 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
+        avatar: user.avatar,
       },
     };
   }
@@ -113,6 +114,7 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
+        avatar: user.avatar,
       },
     };
   }
@@ -160,6 +162,7 @@ export class AuthService {
       user: {
         id: storedToken.user.id,
         email: storedToken.user.email,
+        avatar: storedToken.user.avatar,
       },
     };
   }
@@ -187,6 +190,7 @@ export class AuthService {
       select: {
         id: true,
         email: true,
+        avatar: true,
         createdAt: true,
       },
     });
