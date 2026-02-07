@@ -8,11 +8,6 @@ import { AppModule } from "./app.module";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Simple health endpoint for Docker healthcheck
-  app.getHttpAdapter().get("/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString() });
-  });
-
   // Gzip compression for faster responses
   app.use(compression());
 
