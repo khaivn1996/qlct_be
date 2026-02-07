@@ -2,9 +2,10 @@ services:
   qlct-be:
     image: qlct-backend
     container_name: qlct-backend
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
     restart: unless-stopped
     network_mode: host
     environment:
