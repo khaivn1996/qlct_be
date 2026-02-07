@@ -1,11 +1,15 @@
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe } from "@nestjs/common";
 import { json, urlencoded } from "express";
+import compression from "compression";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Gzip compression for faster responses
+  app.use(compression());
 
   app.use(json({ limit: "50mb" }));
   app.use(urlencoded({ extended: true, limit: "50mb" }));

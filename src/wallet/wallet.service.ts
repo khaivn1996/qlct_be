@@ -6,50 +6,57 @@ export class WalletService {
   constructor(private prisma: PrismaService) {}
 
   async findAll(userId: string) {
+    // Single query with transaction data for balance calculation
     const wallets = await this.prisma.wallet.findMany({
       where: { userId },
       orderBy: { createdAt: "asc" },
+      include: {
+        transactions: {
+          select: {
+            type: true,
+            amount: true,
+          },
+        },
+      },
     });
 
-    // Calculate balance for each wallet
-    const walletsWithBalance = await Promise.all(
-      wallets.map(async (wallet) => {
-        const transactions = await this.prisma.transaction.findMany({
-          where: { walletId: wallet.id },
-        });
-
-        let balance = BigInt(0);
-        for (const txn of transactions) {
-          if (txn.type === "INCOME") {
-            balance += txn.amount;
-          } else {
-            balance -= txn.amount;
-          }
+    // Calculate balance from included transactions (no N+1)
+    return wallets.map((wallet) => {
+      let balance = BigInt(0);
+      for (const txn of wallet.transactions) {
+        if (txn.type === "INCOME") {
+          balance += txn.amount;
+        } else {
+          balance -= txn.amount;
         }
+      }
 
-        return {
-          ...wallet,
-          balance: balance.toString(),
-        };
-      }),
-    );
-
-    return walletsWithBalance;
+      // Remove transactions from response, keep only balance
+      const { transactions: _, ...walletData } = wallet;
+      return {
+        ...walletData,
+        balance: balance.toString(),
+      };
+    });
   }
 
   async findOne(userId: string, walletId: string) {
     const wallet = await this.prisma.wallet.findFirst({
       where: { id: walletId, userId },
+      include: {
+        transactions: {
+          select: {
+            type: true,
+            amount: true,
+          },
+        },
+      },
     });
 
     if (!wallet) return null;
 
-    const transactions = await this.prisma.transaction.findMany({
-      where: { walletId: wallet.id },
-    });
-
     let balance = BigInt(0);
-    for (const txn of transactions) {
+    for (const txn of wallet.transactions) {
       if (txn.type === "INCOME") {
         balance += txn.amount;
       } else {
@@ -57,8 +64,9 @@ export class WalletService {
       }
     }
 
+    const { transactions: _, ...walletData } = wallet;
     return {
-      ...wallet,
+      ...walletData,
       balance: balance.toString(),
     };
   }
