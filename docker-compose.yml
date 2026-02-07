@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      network: host #cho phep build host network
+      network: host
     restart: unless-stopped
     network_mode: host
     environment:
